@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import * as EgovNet from '@api/webfficeFetch';
 import URL from '@constants/url';
 
-import { default as EgovLeftNav } from '@components/leftmenu/EgovLeftNavAdmin';
+import { default as EgovLeftNav } from '@components/leftmenu/WebfficeLeftNavAdmin';
 import EgovPaging from '@components/EgovPaging';
 
 import { itemIdxByPage } from '@utils/calc';

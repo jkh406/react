@@ -3,12 +3,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import URL from '@constants/url';
 
-function EgovLeftNavAdmin() {
+function WebfficeLeftNavAdmin() {
     return (
         <div className="nav">
             <div className="inner">
                 <h2>사이트관리</h2>
                 <ul className="menu4">
+                    <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>코드관리</NavLink></li>
+                    <li><NavLink to={URL.ADMIN_MENU} className={({ isActive }) => (isActive ? "cur" : "")}>메뉴관리</NavLink></li>
+                    <li><NavLink to={URL.ADMIN_AUTH} className={({ isActive }) => (isActive ? "cur" : "")}>권한관리</NavLink></li>
                     <li><NavLink to={URL.ADMIN_SCHEDULE} className={({ isActive }) => (isActive ? "cur" : "")}>일정관리</NavLink></li>
                     <li><NavLink to={URL.ADMIN_BOARD} className={({ isActive }) => (isActive ? "cur" : "")}>게시판생성관리</NavLink></li>
                     <li><NavLink to={URL.ADMIN_USAGE} className={({ isActive }) => (isActive ? "cur" : "")}>게시판사용관리</NavLink></li>
@@ -21,4 +24,4 @@ function EgovLeftNavAdmin() {
     );
 }
 
-export default React.memo(EgovLeftNavAdmin);
+export default React.memo(WebfficeLeftNavAdmin);

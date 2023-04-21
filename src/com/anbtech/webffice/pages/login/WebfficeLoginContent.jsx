@@ -111,7 +111,7 @@ function WebfficeLoginContent(props) {
                                     onChange={e => {
                                             const value = e.target.value;
                                             if(value === 'admin'){
-                                                setUserInfo({ ...userInfo, id: value, userSe: 'ADMIN' })
+                                                setUserInfo({ ...userInfo, id: value, userSe: 'admin' })
                                             } else {
                                                 setUserInfo({ ...userInfo, id: value })
                                             }

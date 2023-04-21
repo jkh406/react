@@ -7,7 +7,7 @@ import URL from '@constants/url';
 import CODE from '@constants/code';
 import { NOTICE_BBS_ID } from '@config';
 
-import { default as EgovLeftNav } from '@components/leftmenu/EgovLeftNavAdmin';
+import { default as EgovLeftNav } from '@components/leftmenu/WebfficeLeftNavAdmin';
 import EgovAttachFile from '@components/EgovAttachFile';
 
 function EgovAdminNoticeDetail(props) {

@@ -4,7 +4,7 @@ export default function initPage() {
 	//모바일에서 관리자 메뉴가 동적으로 추가되었을 때 서브메뉴가 정상 작동되도록 코드 추가 : 2023.04.14(금) 김일국 추가
 	const sessionUser = sessionStorage.getItem('loginUser');
     const sessionUserSe = JSON.parse(sessionUser)?.userSe;
-	if(sessionUserSe ==='ADMIN'){
+	if(sessionUserSe ==='admin'){
 	    // Mobile 서브메뉴 항목 클릭시 메뉴 닫기
         document.querySelectorAll('.all_menu.Mobile .submenu a')
 			.forEach(el => el.addEventListener('click', () =>  {

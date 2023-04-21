@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as EgovNet from '@api/webfficeFetch';
 import URL from '@constants/url';
 import CODE from '@constants/code';
-import { default as EgovLeftNav } from '@components/leftmenu/EgovLeftNavAdmin';
+import { default as EgovLeftNav } from '@components/leftmenu/WebfficeLeftNavAdmin';
 
 function EgovAdminPasswordUpdate(props) {
     console.group("EgovAdminPasswordUpdate");

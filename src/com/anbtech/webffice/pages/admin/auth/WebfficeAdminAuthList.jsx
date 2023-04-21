@@ -3,25 +3,25 @@ import { Link, useLocation } from 'react-router-dom';
 
 import * as EgovNet from '@api/webfficeFetch';
 import URL from '@constants/url';
-import { NOTICE_BBS_ID } from '@config';
+import { GALLERY_BBS_ID } from '@config';
 
 import { default as EgovLeftNav } from '@components/leftmenu/WebfficeLeftNavAdmin';
 import EgovPaging from '@components/EgovPaging';
 
 import { itemIdxByPage } from '@utils/calc';
 
-function EgovAdminNoticeList(props) {
-    console.group("EgovAdminNoticeList");
-    console.log("[Start] EgovAdminNoticeList ------------------------------");
-    console.log("EgovAdminNoticeList [props] : ", props);
+function WebfficeAdminAuthList(props) {
+    console.group("EgovAdminGalleryList");
+    console.log("[Start] EgovAdminGalleryList ------------------------------");
+    console.log("EgovAdminGalleryList [props] : ", props);
 
     const location = useLocation();
-    console.log("EgovAdminNoticeList [location] : ", location);
+    console.log("EgovAdminGalleryList [location] : ", location);
 
     const cndRef = useRef();
     const wrdRef = useRef();
 
-    const bbsId = NOTICE_BBS_ID;
+    const bbsId = GALLERY_BBS_ID;
 
     // eslint-disable-next-line no-unused-vars
     const [searchCondition, setSearchCondition] = useState(location.state?.searchCondition || { bbsId: bbsId, pageIndex: 1, searchCnd: '0', searchWrd: '' });// 기존 조회에서 접근 했을 시 || 신규로 접근 했을 시
@@ -31,7 +31,7 @@ function EgovAdminNoticeList(props) {
     const [listTag, setListTag] = useState([]);
 
     const retrieveList = useCallback((searchCondition) => {
-        console.groupCollapsed("EgovAdminNoticeList.retrieveList()");
+        console.groupCollapsed("EgovAdminGalleryList.retrieveList()");
 
         const retrieveListURL = '/cop/bbs/selectBoardListAPI.do';
         const requestOptions = {
@@ -49,6 +49,7 @@ function EgovAdminNoticeList(props) {
                 setPaginationInfo(resp.result.paginationInfo);
 
                 let mutListTag = [];
+                mutListTag.push(<p className="no_data" key="0">검색된 결과가 없습니다.</p>); // 게시판 목록 초기값
 
                 const resultCnt = parseInt(resp.result.resultCnt);
                 const currentPageNo = resp.result.paginationInfo.currentPageNo;
@@ -60,7 +61,7 @@ function EgovAdminNoticeList(props) {
                     const listIdx = itemIdxByPage(resultCnt , currentPageNo, pageSize, index);
 
                     mutListTag.push(
-                        <Link to={{pathname: URL.ADMIN_NOTICE_DETAIL}}
+                        <Link to={{pathname: URL.ADMIN_GALLERY_DETAIL}} 
                             state={{
                                 nttId: item.nttId,
                                 bbsId: item.bbsId,
@@ -82,23 +83,23 @@ function EgovAdminNoticeList(props) {
                         </Link>
                     );
                 });
-                if(!mutListTag.length) mutListTag.push(<p className="no_data" key="0">검색된 결과가 없습니다.</p>); // 게시판 목록 초기값
                 setListTag(mutListTag);
             },
             function (resp) {
                 console.log("err response : ", resp);
             }
         );
-        console.groupEnd("EgovAdminNoticeList.retrieveList()");
+        console.groupEnd("EgovAdminGalleryList.retrieveList()");
     },[]);
 
+    //======================================================
     useEffect(() => {
         retrieveList(searchCondition);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log("------------------------------EgovAdminNoticeList [End]");
-    console.groupEnd("EgovAdminNoticeList");
+    console.log("------------------------------EgovAdminGalleryList [End]");
+    console.groupEnd("EgovAdminGalleryList");
     return (
         <div className="container">
             <div className="c_wrap">
@@ -106,7 +107,7 @@ function EgovAdminNoticeList(props) {
                 <div className="location">
                     <ul>
                         <li><Link to={URL.MAIN} className="home">Home</Link></li>
-                        <li><Link to={URL.INFORM}>사이트 관리</Link></li>
+                        <li><Link to={URL.ADMIN}>사이트관리</Link></li>
                         <li>{masterBoard && masterBoard.bbsNm}</li>
                     </ul>
                 </div>
@@ -117,7 +118,7 @@ function EgovAdminNoticeList(props) {
                     <EgovLeftNav></EgovLeftNav>
                     {/* <!--// Navigation --> */}
 
-                    <div className="contents NOTICE_LIST" id="contents">
+                    <div className="contents SITE_GALLARY_LIST" id="contents">
                         {/* <!-- 본문 --> */}
 
                         <div className="top_tit">
@@ -149,15 +150,15 @@ function EgovAdminNoticeList(props) {
                                                 wrdRef.current.value = e.target.value;
                                             }}
                                         />
-                                        <button type="button"
-                                            onClick={() => {
-                                                retrieveList({ ...searchCondition, pageIndex: 1, searchCnd: cndRef.current.value, searchWrd: wrdRef.current.value });
-                                            }}>조회</button>
+                                    <button type="button"
+                                        onClick={() => {
+                                            retrieveList({ ...searchCondition, pageIndex: 1, searchCnd: cndRef.current.value, searchWrd: wrdRef.current.value });
+                                        }}>조회</button>
                                     </span>
                                 </li>
                                 {masterBoard.bbsUseFlag === 'Y' &&
                                     <li>
-                                        <Link to={URL.ADMIN_NOTICE_CREATE} state={{bbsId: bbsId}} className="btn btn_blue_h46 pd35">등록</Link>
+                                        <Link to={URL.ADMIN_GALLERY_CREATE} state={{bbsId: bbsId}} className="btn btn_blue_h46 pd35">등록</Link>
                                     </li>
                                 }
                             </ul>
@@ -196,4 +197,4 @@ function EgovAdminNoticeList(props) {
 }
 
 
-export default EgovAdminNoticeList;
+export default WebfficeAdminAuthList;

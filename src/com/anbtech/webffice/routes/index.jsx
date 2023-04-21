@@ -5,7 +5,7 @@ import URL from '@constants/url';
 import CODE from '@constants/code';
 
 //COMMON
-import EgovHeader from '@components/EgovHeader';
+import WebfficeHeader from '@components/WebfficeHeader';
 import EgovFooter from '@components/EgovFooter';
 import EgovInfoPopup from '@components/EgovInfoPopup';
 import EgovError from '@components/EgovError';
@@ -45,6 +45,13 @@ import EgovGalleryDetail from '@pages/inform/gallery/EgovGalleryDetail';
 import EgovGalleryEdit from '@pages/inform/gallery/EgovGalleryEdit';
 
 //ADMIN
+
+import WebfficeAdminCodeList from '@pages/admin/code/WebfficeAdminCodeList';
+
+import WebfficeAdminMenuList from '@pages/admin/menu/WebfficeAdminMenuList';
+
+import WebfficeAdminAuthList from '@pages/admin/auth/WebfficeAdminAuthList';
+
 import EgovAdminScheduleList from '@pages/admin/schedule/EgovAdminScheduleList';
 import EgovAdminScheduleDetail from '@pages/admin/schedule/EgovAdminScheduleDetail';
 import EgovAdminScheduleEdit from '@pages/admin/schedule/EgovAdminScheduleEdit';
@@ -67,7 +74,7 @@ import EgovAdminPasswordUpdate from '@pages/admin/manager/EgovAdminPasswordUpdat
 
 import initPage from '@js/ui';
 
-// 에러 페이지와 같은 상단(EgovHeader) 소스가 제외된 페이지에서 ui.js의 햄버거버튼 작동오류가 발생한다. 
+// 에러 페이지와 같은 상단(WebfficeHeader) 소스가 제외된 페이지에서 ui.js의 햄버거버튼 작동오류가 발생한다. 
 // 즉, ui.js가 작동되지 않아서 재 로딩 해야 한다. 그래서, useRef객체를 사용하여 이전 페이지 URL을 구하는 코드 추가(아래)
 const usePrevLocation = (location) => {
 	const prevLocRef = useRef(location);
@@ -100,7 +107,7 @@ const SecondRoutes = () => {
   
   return (
     <>
-      <EgovHeader loginUser={loginVO} onChangeLogin={(user) => setLoginVO(user)} />
+      <WebfficeHeader loginUser={loginVO} onChangeLogin={(user) => setLoginVO(user)} />
       <Routes>
         {/* MAIN */}
         <Route path={URL.MAIN} element={<EgovMain />} />
@@ -159,6 +166,13 @@ const SecondRoutes = () => {
 
         {/* ADMIN */}
         <Route path={URL.ADMIN} element={<Navigate to={URL.ADMIN_SCHEDULE} />} />
+
+        <Route path={URL.ADMIN_CODE} element={<WebfficeAdminCodeList />} />
+
+        <Route path={URL.ADMIN_MENU} element={<WebfficeAdminMenuList />} />
+
+        <Route path={URL.ADMIN_AUTH} element={<WebfficeAdminAuthList />} />
+
         <Route path={URL.ADMIN_SCHEDULE} element={<EgovAdminScheduleList />} />
         <Route path={URL.ADMIN_SCHEDULE_DETAIL} element={<EgovAdminScheduleDetail />} />
         <Route path={URL.ADMIN_SCHEDULE_CREATE} element={<EgovAdminScheduleEdit mode={CODE.MODE_CREATE} />} />

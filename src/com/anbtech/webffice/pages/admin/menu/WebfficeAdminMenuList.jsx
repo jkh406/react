@@ -1,22 +1,25 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
 import * as EgovNet from '@api/webfficeFetch';
 import URL from '@constants/url';
 import { NOTICE_BBS_ID } from '@config';
-
 import { default as EgovLeftNav } from '@components/leftmenu/WebfficeLeftNavAdmin';
 import EgovPaging from '@components/EgovPaging';
-
 import { itemIdxByPage } from '@utils/calc';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import TreeView from '@mui/lab/TreeView';
+import TreeItem from '@mui/lab/TreeItem';
 
-function EgovAdminNoticeList(props) {
-    console.group("EgovAdminNoticeList");
-    console.log("[Start] EgovAdminNoticeList ------------------------------");
-    console.log("EgovAdminNoticeList [props] : ", props);
+function WebfficeAdminMenuList(props) {
+    console.group("WebfficeAdminMenuList");
+    console.log("[Start] WebfficeAdminMenuList ------------------------------");
+    console.log("WebfficeAdminMenuList [props] : ", props);
 
     const location = useLocation();
-    console.log("EgovAdminNoticeList [location] : ", location);
+    console.log("WebfficeAdminMenuList [location] : ", location);
 
     const cndRef = useRef();
     const wrdRef = useRef();
@@ -31,7 +34,7 @@ function EgovAdminNoticeList(props) {
     const [listTag, setListTag] = useState([]);
 
     const retrieveList = useCallback((searchCondition) => {
-        console.groupCollapsed("EgovAdminNoticeList.retrieveList()");
+        console.groupCollapsed("WebfficeAdminMenuList.retrieveList()");
 
         const retrieveListURL = '/cop/bbs/selectBoardListAPI.do';
         const requestOptions = {
@@ -89,7 +92,7 @@ function EgovAdminNoticeList(props) {
                 console.log("err response : ", resp);
             }
         );
-        console.groupEnd("EgovAdminNoticeList.retrieveList()");
+        console.groupEnd("WebfficeAdminMenuList.retrieveList()");
     },[]);
 
     useEffect(() => {
@@ -97,8 +100,8 @@ function EgovAdminNoticeList(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log("------------------------------EgovAdminNoticeList [End]");
-    console.groupEnd("EgovAdminNoticeList");
+    console.log("------------------------------WebfficeAdminMenuList [End]");
+    console.groupEnd("WebfficeAdminMenuList");
     return (
         <div className="container">
             <div className="c_wrap">
@@ -120,46 +123,20 @@ function EgovAdminNoticeList(props) {
                     <div className="contents NOTICE_LIST" id="contents">
                         {/* <!-- 본문 --> */}
 
-                        <div className="top_tit">
-                            <h1 className="tit_1">사이트관리</h1>
-                        </div>
-
                         <h2 className="tit_2">{masterBoard && masterBoard.bbsNm}</h2>
 
                         {/* <!-- 검색조건 --> */}
                         <div className="condition">
                             <ul>
-                                <li className="third_1 L">
-                                    <label className="f_select" htmlFor="sel1">
-                                        <select id="sel1" title="조건" defaultValue={searchCondition.searchCnd} ref={cndRef}
-                                            onChange={e => {
-                                                cndRef.current.value = e.target.value; 
-                                            }}
-                                        >
-                                            <option value="0">제목</option>
-                                            <option value="1">내용</option>
-                                            <option value="2">작성자</option>
-                                        </select>
-                                    </label>
-                                </li>
-                                <li className="third_2 R">
-                                    <span className="f_search w_500">
-                                        <input type="text" name="" defaultValue={searchCondition.searchWrd} placeholder="" ref={wrdRef}
-                                            onChange={e => {
-                                                wrdRef.current.value = e.target.value;
-                                            }}
-                                        />
-                                        <button type="button"
-                                            onClick={() => {
-                                                retrieveList({ ...searchCondition, pageIndex: 1, searchCnd: cndRef.current.value, searchWrd: wrdRef.current.value });
-                                            }}>조회</button>
-                                    </span>
-                                </li>
-                                {masterBoard.bbsUseFlag === 'Y' &&
+                                    <li>
+                                        <Link to={URL.ADMIN_NOTICE_CREATE} state={{bbsId: bbsId}} className="btn btn_blue_h46 pd35">조회</Link>
+                                    </li>
                                     <li>
                                         <Link to={URL.ADMIN_NOTICE_CREATE} state={{bbsId: bbsId}} className="btn btn_blue_h46 pd35">등록</Link>
                                     </li>
-                                }
+                                    <li>
+                                        <Link to={URL.ADMIN_NOTICE_CREATE} state={{bbsId: bbsId}} className="btn btn_blue_h46 pd35">수정</Link>
+                                    </li>
                             </ul>
                         </div>
                         {/* <!--// 검색조건 --> */}
@@ -179,13 +156,6 @@ function EgovAdminNoticeList(props) {
                         </div>
                         {/* <!--// 게시판목록 --> */}
 
-                        <div className="board_bot">
-                            {/* <!-- Paging --> */}
-                            <EgovPaging pagination={paginationInfo} moveToPage={passedPage => {
-                                retrieveList({ ...searchCondition, pageIndex: passedPage, searchCnd: cndRef.current.value, searchWrd: wrdRef.current.value })
-                            }} />
-                            {/* <!--/ Paging --> */}
-                        </div>
 
                         {/* <!--// 본문 --> */}
                     </div>
@@ -196,4 +166,4 @@ function EgovAdminNoticeList(props) {
 }
 
 
-export default EgovAdminNoticeList;
+export default WebfficeAdminMenuList;

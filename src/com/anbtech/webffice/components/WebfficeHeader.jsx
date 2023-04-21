@@ -6,9 +6,9 @@ import * as EgovNet from '@api/webfficeFetch';
 import URL from '@constants/url';
 import CODE from '@constants/code';
 
-function EgovHeader({ loginUser, onChangeLogin }) {
-    console.group("EgovHeader");
-    console.log("[Start] EgovHeader ------------------------------");
+function WebfficeHeader({ loginUser, onChangeLogin }) {
+    console.group("WebfficeHeader");
+    console.log("[Start] WebfficeHeader ------------------------------");
 
     const sessionUser = sessionStorage.getItem('loginUser');
     const sessionUserId = JSON.parse(sessionUser)?.id;
@@ -49,8 +49,8 @@ function EgovHeader({ loginUser, onChangeLogin }) {
     }
 
     console.log("sessionUserSe =", sessionUserSe);
-    console.log("------------------------------EgovHeader [End]");
-    console.groupEnd("EgovHeader");
+    console.log("------------------------------WebfficeHeader [End]");
+    console.groupEnd("WebfficeHeader");
 
     return (
         // <!-- header -->
@@ -70,7 +70,7 @@ function EgovHeader({ loginUser, onChangeLogin }) {
                         <li><NavLink to={URL.INTRO} className={({ isActive }) => (isActive ? "cur" : "")}>정보마당</NavLink></li>
                         <li><NavLink to={URL.SUPPORT} className={({ isActive }) => (isActive ? "cur" : "")}>고객지원</NavLink></li>
                         <li><NavLink to={URL.INFORM} className={({ isActive }) => (isActive ? "cur" : "")}>알림마당</NavLink></li>
-                        {sessionUserSe ==='ADMIN' &&
+                        {sessionUserSe ==='admin' &&
                             <li><NavLink to={URL.ADMIN} className={({ isActive }) => (isActive ? "cur" : "")}>사이트관리</NavLink></li>
                         }
                     </ul>
@@ -81,7 +81,7 @@ function EgovHeader({ loginUser, onChangeLogin }) {
                     {/* 로그아웃 : 로그인 정보 있을때 */}
                     {sessionUserId &&
                         <>
-                            <span className="person">{sessionUserName} </span> 님이, 관리자로 로그인하셨습니다.
+                            <span className="person">{sessionUserName} </span> 님이, 로그인하셨습니다.
                             <button onClick={logOutHandler} className="btn">로그아웃</button>
                         </>
                     }
@@ -136,10 +136,13 @@ function EgovHeader({ loginUser, onChangeLogin }) {
                             <li><NavLink to={URL.INFORM_GALLERY} className={({ isActive }) => (isActive ? "cur" : "")}>사이트 갤러리</NavLink></li>
                         </ul>
                     </div>
-                    {sessionUserSe ==='ADMIN' &&
+                    {sessionUserSe ==='admin' &&
                         <div className="col">
                             <h3>사이트관리</h3>
                             <ul>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>코드관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_MENU} className={({ isActive }) => (isActive ? "cur" : "")}>메뉴관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_AUTH} className={({ isActive }) => (isActive ? "cur" : "")}>권한관리</NavLink></li>
                                 <li><NavLink to={URL.ADMIN_SCHEDULE} className={({ isActive }) => (isActive ? "cur" : "")}>일정관리</NavLink></li>
                                 <li><NavLink to={URL.ADMIN_BOARD} className={({ isActive }) => (isActive ? "cur" : "")}>게시판생성관리</NavLink></li>
                                 <li><NavLink to={URL.ADMIN_USAGE} className={({ isActive }) => (isActive ? "cur" : "")}>게시판사용관리</NavLink></li>
@@ -202,7 +205,7 @@ function EgovHeader({ loginUser, onChangeLogin }) {
                             <li><NavLink to={URL.INFORM_GALLERY} className={({ isActive }) => (isActive ? "cur" : "")}>사이트 갤러리</NavLink></li>
                         </ul>
                     </div>
-                    {sessionUserSe ==='ADMIN' &&
+                    {sessionUserSe ==='admin' &&
                         <>
                             <h3><Link to={URL.ADMIN}>사이트관리</Link></h3>
                             <div className="submenu closed">
@@ -225,4 +228,4 @@ function EgovHeader({ loginUser, onChangeLogin }) {
     );
 }
 
-export default EgovHeader;
+export default WebfficeHeader;

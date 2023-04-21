@@ -5,7 +5,7 @@ import * as EgovNet from '@api/webfficeFetch';
 import URL from '@constants/url';
 import { GALLERY_BBS_ID } from '@config';
 
-import { default as EgovLeftNav } from '@components/leftmenu/EgovLeftNavAdmin';
+import { default as EgovLeftNav } from '@components/leftmenu/WebfficeLeftNavAdmin';
 import EgovPaging from '@components/EgovPaging';
 
 import { itemIdxByPage } from '@utils/calc';

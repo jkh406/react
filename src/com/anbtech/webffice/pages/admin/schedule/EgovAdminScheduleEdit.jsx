@@ -6,7 +6,7 @@ import * as EgovNet from '@api/webfficeFetch';
 import URL from '@constants/url';
 import CODE from '@constants/code';
 
-import { default as EgovLeftNav } from '@components/leftmenu/EgovLeftNavAdmin';
+import { default as EgovLeftNav } from '@components/leftmenu/WebfficeLeftNavAdmin';
 import EgovAttachFile from '@components/EgovAttachFile';
 import EgovRadioButtonGroup from '@components/EgovRadioButtonGroup';
 

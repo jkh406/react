@@ -46,6 +46,16 @@ const URL = {
     
     //ADMIN
     ADMIN                       : "/admin", // 사이트관리
+
+    ADMIN_CODE                  : "/admin/code", // 사이트관리/코드 관리
+    ADMIN_CODE_DETAIL           : "/admin/code/detail", // 사이트관리/코드 관리상세
+
+    ADMIN_MENU                  : "/admin/menu", // 사이트관리/메뉴 관리
+    ADMIN_MENU_DETAIL           : "/admin/menu/detail", // 사이트관리/메뉴 관리상세
+
+    ADMIN_AUTH                  : "/admin/auth", // 사이트관리/권한 관리
+    ADMIN_AUTH_DETAIL           : "/admin/auth/detail", // 사이트관리/권한 관리상세
+
     ADMIN_SCHEDULE              : "/admin/schedule", // 사이트관리/일정관리
     ADMIN_SCHEDULE_DETAIL       : "/admin/schedule/detail", // 사이트관리/일정관리상세
     ADMIN_SCHEDULE_CREATE       : "/admin/schedule/create", // 사이트관리/일정관리생성
