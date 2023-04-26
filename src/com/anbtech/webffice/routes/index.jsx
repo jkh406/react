@@ -3,7 +3,6 @@ import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 
 import URL from '@constants/url';
 import CODE from '@constants/code';
-import * as WebfficeNet from '@api/webfficeFetch';
 
 //COMMON
 import WebfficeHeader from '@components/WebfficeHeader';
@@ -70,10 +69,10 @@ import EgovAdminNoticeEdit from '@pages/admin/notice/EgovAdminNoticeEdit';
 import EgovAdminGalleryList from '@pages/admin/gallery/EgovAdminGalleryList';
 import EgovAdminGalleryDetail from '@pages/admin/gallery/EgovAdminGalleryDetail';
 import EgovAdminGalleryEdit from '@pages/admin/gallery/EgovAdminGalleryEdit';
-//사이트관리자 암호 바꾸기 기능 추가 2023.04.15(토) 김일국 추가
 import EgovAdminPasswordUpdate from '@pages/admin/manager/EgovAdminPasswordUpdate';
 
 import initPage from '@js/ui';
+
 
 // 에러 페이지와 같은 상단(WebfficeHeader) 소스가 제외된 페이지에서 ui.js의 햄버거버튼 작동오류가 발생한다. 
 // 즉, ui.js가 작동되지 않아서 재 로딩 해야 한다. 그래서, useRef객체를 사용하여 이전 페이지 URL을 구하는 코드 추가(아래)
@@ -89,27 +88,6 @@ const RootRoutes = () => {
   //useLocation객체를 이용하여 에러페이시 이동 전 location 객체를 저장하는 코드 추가(아래 2줄) */}
   const location = useLocation();
   const prevLocation = usePrevLocation(location);
-  useEffect(()=>{
-    
-    console.groupCollapsed("WebfficeProgram.retrieveList()");
-        
-        const Url = "/sym/prm/ProgramListManageSelect.do"
-        const requestOptions = {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify()
-        }
-
-        WebfficeNet.requestFetch(Url,
-            requestOptions,
-            (resp) => {
-              console.log('WebfficeProgram resp.result', resp.result);
-            })
-      console.groupEnd("WebfficeProgram.retrieveList()");
-
-	});
 
   return (
       <Routes> {/* 에러페지시 호출시 이전 prevUrl객체를 전송하는 코드 추가(아래) */}
@@ -122,7 +100,6 @@ const RootRoutes = () => {
 const SecondRoutes = () => {
 
   const [loginVO, setLoginVO] = useState({});
-
   useEffect(() => {
     initPage();
   });
@@ -132,7 +109,7 @@ const SecondRoutes = () => {
       <WebfficeHeader loginUser={loginVO} onChangeLogin={(user) => setLoginVO(user)} />
       <Routes>
         {/* MAIN */}
-        <Route path={URL.MAIN} element={<EgovMain />} />
+        <Route path={URL.MAIN} element={<EgovMain/>} />
 
         {/* LOGIN */}
         <Route path={URL.LOGIN} element={<EgovLogin

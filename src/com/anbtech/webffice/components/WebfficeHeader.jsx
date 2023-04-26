@@ -7,8 +7,8 @@ import URL from '@constants/url';
 import CODE from '@constants/code';
 
 function WebfficeHeader({ loginUser, onChangeLogin }) {
-    console.group("WebfficeHeader");
-    console.log("[Start] WebfficeHeader ------------------------------");
+    // console.group("WebfficeHeader");
+    // console.log("[Start] WebfficeHeader ------------------------------");
 
     const sessionUser = sessionStorage.getItem('loginUser');
     const sessionUserId = JSON.parse(sessionUser)?.id;
@@ -32,7 +32,7 @@ function WebfficeHeader({ loginUser, onChangeLogin }) {
         }
         EgovNet.requestFetch(logOutUrl, requestOptions,
             function (resp) {
-                console.log("===>>> logout resp= ", resp);
+                // console.log("===>>> logout resp= ", resp);
                 if (parseInt(resp.resultCode) === parseInt(CODE.RCV_SUCCESS)) {
                     onChangeLogin({ loginVO: {} });
                     sessionStorage.setItem('loginUser', JSON.stringify({"id":""}));
@@ -48,9 +48,9 @@ function WebfficeHeader({ loginUser, onChangeLogin }) {
         );
     }
 
-    console.log("sessionUserSe =", sessionUserSe);
-    console.log("------------------------------WebfficeHeader [End]");
-    console.groupEnd("WebfficeHeader");
+    // console.log("sessionUserSe =", sessionUserSe);
+    // console.log("------------------------------WebfficeHeader [End]");
+    // console.groupEnd("WebfficeHeader");
 
     return (
         // <!-- header -->
