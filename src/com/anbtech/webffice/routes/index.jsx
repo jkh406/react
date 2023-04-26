@@ -3,6 +3,7 @@ import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 
 import URL from '@constants/url';
 import CODE from '@constants/code';
+import * as WebfficeNet from '@api/webfficeFetch';
 
 //COMMON
 import WebfficeHeader from '@components/WebfficeHeader';
@@ -88,6 +89,27 @@ const RootRoutes = () => {
   //useLocation객체를 이용하여 에러페이시 이동 전 location 객체를 저장하는 코드 추가(아래 2줄) */}
   const location = useLocation();
   const prevLocation = usePrevLocation(location);
+  useEffect(()=>{
+    
+    console.groupCollapsed("WebfficeProgram.retrieveList()");
+        
+        const Url = "/sym/prm/ProgramListManageSelect.do"
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify()
+        }
+
+        WebfficeNet.requestFetch(Url,
+            requestOptions,
+            (resp) => {
+              console.log('WebfficeProgram resp.result', resp.result);
+            })
+      console.groupEnd("WebfficeProgram.retrieveList()");
+
+	});
 
   return (
       <Routes> {/* 에러페지시 호출시 이전 prevUrl객체를 전송하는 코드 추가(아래) */}

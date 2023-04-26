@@ -138,17 +138,26 @@ function WebfficeHeader({ loginUser, onChangeLogin }) {
                     </div>
                     {sessionUserSe ==='admin' &&
                         <div className="col">
-                            <h3>사이트관리</h3>
+                            <h2>내부시스템관리</h2>
                             <ul>
-                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>코드관리</NavLink></li>
-                                <li><NavLink to={URL.ADMIN_MENU} className={({ isActive }) => (isActive ? "cur" : "")}>메뉴관리</NavLink></li>
-                                <li><NavLink to={URL.ADMIN_AUTH} className={({ isActive }) => (isActive ? "cur" : "")}>권한관리</NavLink></li>
-                                <li><NavLink to={URL.ADMIN_SCHEDULE} className={({ isActive }) => (isActive ? "cur" : "")}>일정관리</NavLink></li>
-                                <li><NavLink to={URL.ADMIN_BOARD} className={({ isActive }) => (isActive ? "cur" : "")}>게시판생성관리</NavLink></li>
-                                <li><NavLink to={URL.ADMIN_USAGE} className={({ isActive }) => (isActive ? "cur" : "")}>게시판사용관리</NavLink></li>
-                                <li><NavLink to={URL.ADMIN_NOTICE} className={({ isActive }) => (isActive ? "cur" : "")}>공지사항관리</NavLink></li>
-                                <li><NavLink to={URL.ADMIN_GALLERY} className={({ isActive }) => (isActive ? "cur" : "")}>사이트갤러리관리</NavLink></li>
-								<li><NavLink to={URL.ADMIN_MANAGER} className={({ isActive }) => (isActive ? "cur" : "")}>사이트관리자 암호변경</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>사용자등록관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>사용자부재관리</NavLink></li>
+                            </ul>
+                            <ul>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>권한관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>사용자그룹관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>사용자별권한관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>롤관리</NavLink></li>
+                            </ul>
+                            <ul>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>프로그램목록관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>메뉴생성관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>메뉴목록관리</NavLink></li>
+                            </ul>
+                            <ul>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>분류코드관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>공통코드관리</NavLink></li>
+                                <li><NavLink to={URL.ADMIN_CODE} className={({ isActive }) => (isActive ? "cur" : "")}>상세코드관리</NavLink></li>
                             </ul>
                         </div>
                     }

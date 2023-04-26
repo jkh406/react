@@ -47,14 +47,30 @@ const URL = {
     //ADMIN
     ADMIN                       : "/admin", // 사이트관리
 
-    ADMIN_CODE                  : "/admin/code", // 사이트관리/코드 관리
-    ADMIN_CODE_DETAIL           : "/admin/code/detail", // 사이트관리/코드 관리상세
+    ADMIN_USER                  : "/admin/user", // 사이트관리/사용자등록관리
+
+    ADMIN_AUTH                  : "/admin/auth", // 사이트관리/권한 관리
+    ADMIN_AUTH_DETAIL           : "/admin/auth/detail", // 사이트관리/권한 관리상세
+
+    ADMIN_GROUP                 : "/admin/group", // 사이트관리/사용자 그룹 관리
+
+    ADMIN_AUTHORGROUP           : "/admin/authorgroup", // 사이트관리/사용자 별 권한 관리
+
+    ADMIN_ROLE                  : "/admin/role", // 사이트관리/role 관리
+
+    ADMIN_PROGRAM               : "/admin/program", // 사이트관리/프로그램 관리
 
     ADMIN_MENU                  : "/admin/menu", // 사이트관리/메뉴 관리
     ADMIN_MENU_DETAIL           : "/admin/menu/detail", // 사이트관리/메뉴 관리상세
 
-    ADMIN_AUTH                  : "/admin/auth", // 사이트관리/권한 관리
-    ADMIN_AUTH_DETAIL           : "/admin/auth/detail", // 사이트관리/권한 관리상세
+    ADMIN_COMCODE               : "/admin/comcode", // 사이트관리/공통코드 관리
+    ADMIN_COMCODE_DETAIL        : "/admin/code/detail", // 사이트관리/공통코드 관리상세
+    
+    ADMIN_CODECL                : "/admin/codecl", // 사이트관리/분류코드 관리
+    ADMIN_CODECL_DETAIL         : "/admin/codecl/detail", // 사이트관리/분류코드 관리상세
+
+    ADMIN_DETAILCODE            : "/admin/detailcode", // 사이트관리/상세코드 관리
+    ADMIN_DETAILCODE_DETAIL     : "/admin/detailcode/detail", // 사이트관리/상세코드 관리상세
 
     ADMIN_SCHEDULE              : "/admin/schedule", // 사이트관리/일정관리
     ADMIN_SCHEDULE_DETAIL       : "/admin/schedule/detail", // 사이트관리/일정관리상세
