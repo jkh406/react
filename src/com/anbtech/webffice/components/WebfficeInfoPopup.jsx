@@ -1,6 +1,6 @@
 import React from 'react';
 
-function EgovInfoPopup(){
+function WebfficeInfoPopup(){
     return (
         <div className="wrap_pop TEMPLATE_INTRO">
         <div className="pop_inner">
@@ -26,4 +26,4 @@ function EgovInfoPopup(){
     )
 }
 
-export default EgovInfoPopup;
+export default WebfficeInfoPopup;

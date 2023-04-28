@@ -6,9 +6,9 @@ import CODE from '@constants/code';
 
 //COMMON
 import WebfficeHeader from '@components/WebfficeHeader';
-import EgovFooter from '@components/EgovFooter';
-import EgovInfoPopup from '@components/EgovInfoPopup';
-import EgovError from '@components/EgovError';
+import WebfficeFooter from '@components/WebfficeFooter';
+import WebfficeInfoPopup from '@components/WebfficeInfoPopup';
+import WebfficeError from '@components/WebfficeError';
 
 import EgovMain from '@pages/main/WebfficeMain';
 import EgovLogin from '@pages/login/WebfficeLogin';
@@ -52,6 +52,8 @@ import WebfficeAdminMenuList from '@pages/admin/menu/WebfficeAdminMenuList';
 
 import WebfficeAdminAuthList from '@pages/admin/auth/WebfficeAdminAuthList';
 
+import WebfficeAdminProgramList from '@pages/admin/program/WebfficeAdminProgramList';
+
 import EgovAdminScheduleList from '@pages/admin/schedule/EgovAdminScheduleList';
 import EgovAdminScheduleDetail from '@pages/admin/schedule/EgovAdminScheduleDetail';
 import EgovAdminScheduleEdit from '@pages/admin/schedule/EgovAdminScheduleEdit';
@@ -91,7 +93,7 @@ const RootRoutes = () => {
 
   return (
       <Routes> {/* 에러페지시 호출시 이전 prevUrl객체를 전송하는 코드 추가(아래) */}
-        <Route path={URL.ERROR} element={<EgovError prevUrl={prevLocation} />} />
+        <Route path={URL.ERROR} element={<WebfficeError prevUrl={prevLocation} />} />
         <Route path="*" element={<SecondRoutes/>} />
       </Routes>
   )
@@ -117,7 +119,7 @@ const SecondRoutes = () => {
               />}/>
 
         {/* ERROR */}
-        <Route path={URL.ERROR} element={<EgovError />} />
+        <Route path={URL.ERROR} element={<WebfficeError />} />
 
         {/* ABOUT */}
         <Route path={URL.ABOUT} element={<Navigate to={URL.ABOUT_SITE} />} />
@@ -172,6 +174,8 @@ const SecondRoutes = () => {
 
         <Route path={URL.ADMIN_AUTH} element={<WebfficeAdminAuthList />} />
 
+        <Route path={URL.ADMIN_PROGRAM} element={<WebfficeAdminProgramList />} />
+
         <Route path={URL.ADMIN_SCHEDULE} element={<EgovAdminScheduleList />} />
         <Route path={URL.ADMIN_SCHEDULE_DETAIL} element={<EgovAdminScheduleDetail />} />
         <Route path={URL.ADMIN_SCHEDULE_CREATE} element={<EgovAdminScheduleEdit mode={CODE.MODE_CREATE} />} />
@@ -199,8 +203,8 @@ const SecondRoutes = () => {
 
 		    <Route path={URL.ADMIN_MANAGER} element={<EgovAdminPasswordUpdate />} />
       </Routes>
-      <EgovFooter />
-      <EgovInfoPopup />
+      <WebfficeFooter />
+      <WebfficeInfoPopup />
       
     </>
   )

@@ -4,7 +4,11 @@ const URL = {
     MAIN                        : "/", //메인페이지   
     
     LOGIN                       : "/login", //로그인
-    ERROR                       : "/error", //로그인
+    ERROR                       : "/error", //에러페이지
+
+    APPR                        : "/appr", //전자결재
+
+    HRM                         : "/error", //근태관리
     
     //ABOUT
     ABOUT                       : "/about", //사이트소개   

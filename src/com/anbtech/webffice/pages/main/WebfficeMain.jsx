@@ -5,20 +5,14 @@ import * as WebfficeNet from '@api/webfficeFetch';
 import URL from '@constants/url';
 
 function WebfficeMain(props) {
-    // console.group("WebfficeMain");
-    // console.log("[Start] WebfficeMain ------------------------------");
-    // console.log("WebfficeMain [props] : ", props);
 
     const location = useLocation();
-    // console.log("WebfficeMain [location] : ", location);
-
     const [noticeBoard, setNoticeBoard] = useState();
     const [gallaryBoard, setGallaryBoard] = useState();
     const [noticeListTag, setNoticeListTag] = useState();
     const [gallaryListTag, setGallaryListTag] = useState();
 
     const retrieveList = useCallback(() => {
-        // console.groupCollapsed("WebfficeMain.retrieveList()");
 
         const retrieveListURL = '/cmm/main/mainPageAPI.do';
         const requestOptions = {
@@ -86,15 +80,12 @@ function WebfficeMain(props) {
                 console.log("err response : ", resp);
             }
         );
-        // console.groupEnd("WebfficeMain.retrieveList()");
     },[]);
 
-    useEffect(() => {
-        retrieveList();
-    }, [retrieveList]);
+    // useEffect(() => {
+    //     retrieveList();
+    // }, [retrieveList]);
 
-    // console.log("------------------------------WebfficeMain [End]");
-    // console.groupEnd("WebfficeMain");
 
     return (
         <div className="container P_MAIN">

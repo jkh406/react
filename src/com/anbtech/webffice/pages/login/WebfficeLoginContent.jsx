@@ -6,21 +6,13 @@ import URL from '@constants/url';
 import CODE from '@constants/code';
 
 function WebfficeLoginContent(props) {
-    console.group("WebfficeLoginContent");
-    console.log("[Start] WebfficeLoginContent ------------------------------");
-    console.log("WebfficeLoginContent [props] : ", props);
 
     const navigate = useNavigate();
     const location = useLocation();
-    console.log("WebfficeLoginContent [location] : ", location);
-
     const [userInfo, setUserInfo] = useState({ id: '', password: 'default', userSe: 'USR' });
     const [loginVO, setLoginVO] = useState({});
-
     const [saveIDFlag, setSaveIDFlag] = useState(false);
-
     const checkRef = useRef();
-
     const KEY_ID = "KEY_ID";
     const KEY_SAVE_ID_FLAG = "KEY_SAVE_ID_FLAG";
 
@@ -56,8 +48,6 @@ function WebfficeLoginContent(props) {
       }, [idFlag]);
 
     const submitFormHandler = (e) => {
-        console.log("WebfficeLoginContent submitFormHandler()");
-        
         const loginUrl = "/uat/uia/actionLoginJWT.do"
         const requestOptions = {
             method: "POST",
@@ -92,9 +82,6 @@ function WebfficeLoginContent(props) {
             })
     }
 
-    console.log("------------------------------WebfficeLoginContent [End]");
-    console.groupEnd("WebfficeLoginContent");
-    
     return (
         <div className="contents" id="contents">
             {/* <!-- 본문 --> */}

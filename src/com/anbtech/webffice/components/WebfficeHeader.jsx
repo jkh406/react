@@ -7,9 +7,6 @@ import URL from '@constants/url';
 import CODE from '@constants/code';
 
 function WebfficeHeader({ loginUser, onChangeLogin }) {
-    // console.group("WebfficeHeader");
-    // console.log("[Start] WebfficeHeader ------------------------------");
-
     const sessionUser = sessionStorage.getItem('loginUser');
     const sessionUserId = JSON.parse(sessionUser)?.id;
     const sessionUserName = JSON.parse(sessionUser)?.name;
@@ -19,7 +16,6 @@ function WebfficeHeader({ loginUser, onChangeLogin }) {
 
     const logInHandler = () => { // 로그인 정보 없을 시
         navigate(URL.LOGIN);
-		// PC와 Mobile 열린메뉴 닫기: 2023.04.13(목) 김일국 추가
 		document.querySelector('.all_menu.WEB').classList.add('closed');
         document.querySelector('.btnAllMenu').classList.remove('active');
         document.querySelector('.btnAllMenu').title = '전체메뉴 닫힘';
@@ -47,10 +43,6 @@ function WebfficeHeader({ loginUser, onChangeLogin }) {
             }
         );
     }
-
-    // console.log("sessionUserSe =", sessionUserSe);
-    // console.log("------------------------------WebfficeHeader [End]");
-    // console.groupEnd("WebfficeHeader");
 
     return (
         // <!-- header -->

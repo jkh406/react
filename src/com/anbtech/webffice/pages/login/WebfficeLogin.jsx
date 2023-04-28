@@ -6,16 +6,9 @@ import WebfficeLoginContent from '@pages/login/WebfficeLoginContent';
 import URL from '@constants/url';
 
 function WebfficeLogin(props) {
-    console.group("WebfficeLogin");
-    console.log("[Start] WebfficeLogin ------------------------------");
-    console.log("WebfficeLogin [props] : ", props);
-
     const onChangeLogin = (user) => {
         props.onChangeLogin(user);
     }
-
-    console.log("------------------------------WebfficeLogin [End]");
-    console.groupEnd("WebfficeLogin");
 
     return (
         <div className="container">

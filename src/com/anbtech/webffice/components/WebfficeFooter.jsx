@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function EgovFooter() {
+function WebfficeFooter() {
     return (
         <div className="footer">
             <div className="inner">
@@ -33,4 +33,4 @@ function EgovFooter() {
     );
 }
 
-export default EgovFooter;
+export default WebfficeFooter;
