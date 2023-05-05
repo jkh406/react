@@ -46,6 +46,7 @@ function EgovNoticeList(props) {
         EgovNet.requestFetch(retrieveListURL,
             requestOptions,
             (resp) => {
+                console.log("resp", resp);
                 setMasterBoard(resp.result.brdMstrVO);
                 setPaginationInfo(resp.result.paginationInfo);
                 setUser(resp.result.user);

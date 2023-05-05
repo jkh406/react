@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import * as WebfficeNet from '@api/webfficeFetch';
 
 import URL from '@constants/url';
-import CODE from '@constants/code';
 
 function WebfficeLoginContent(props) {
 
@@ -48,7 +47,7 @@ function WebfficeLoginContent(props) {
       }, [idFlag]);
 
     const submitFormHandler = (e) => {
-        const loginUrl = "/uat/uia/actionLoginJWT.do"
+        const loginUrl = "/api/login"
         const requestOptions = {
             method: "POST",
             headers: {
@@ -60,12 +59,12 @@ function WebfficeLoginContent(props) {
         WebfficeNet.requestFetch(loginUrl,
             requestOptions,
             (resp) => {
-                let resultVO = resp.resultVO;
-                let jToken = resp?.jToken
+                let resultVO = resp.data.User;
+                let jToken = resp.data.Token;
 
                 localStorage.setItem('jToken', jToken);
 
-                if (Number(resp.resultCode) === Number(CODE.RCV_SUCCESS)) {
+                if (resp.success) {
                     setLoginVO(resultVO);
                     sessionStorage.setItem('loginUser', JSON.stringify(resultVO));
                     props.onChangeLogin(resultVO);
